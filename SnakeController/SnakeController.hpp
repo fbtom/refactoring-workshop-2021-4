@@ -7,6 +7,7 @@
 
 #include "IEventHandler.hpp"
 #include "SnakeInterface.hpp"
+#include "SnakeSegments.hpp"
 
 class Event;
 class IPort;
@@ -34,15 +35,16 @@ public:
     void receive(std::unique_ptr<Event> e) override;
 
 private:
+    SnakeSegments m_snakeSegments;
     IPort& m_displayPort;
     IPort& m_foodPort;
     IPort& m_scorePort;
 
     std::pair<int, int> m_mapDimension;
     std::pair<int, int> m_foodPosition;
+    
 
-    struct Segment
-    {
+     struct Segment {
         int x;
         int y;
     };
